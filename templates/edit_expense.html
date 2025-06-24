@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Expense</h2>
+<form method="POST">
+    <input type="date" name="date" value="{{ expense.date.strftime('%Y-%m-%d') }}" class="form-control mb-2" required>
+    <input type="text" name="category" value="{{ expense.category }}" class="form-control mb-2" required>
+    <input type="text" name="description" value="{{ expense.description }}" class="form-control mb-2">
+    <input type="number" name="amount" value="{{ expense.amount }}" class="form-control mb-2" required>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
