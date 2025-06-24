@@ -5,12 +5,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from collections import defaultdict
 import csv
+import os
 from io import StringIO
 from flask import Response
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.db'
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'expenses.db')
 app.config['SECRET_KEY'] = 'secret-key'
 db = SQLAlchemy(app)
 
